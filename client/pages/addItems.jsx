@@ -13,9 +13,10 @@ export default class AddItem extends React.Component {
       itemName: '',
       itemPrice: '',
       itemDesc: '',
-      itemImg: 'blank.jpeg',
+      itemImg: 'https://finalprojectmeet.s3.us-west-1.amazonaws.com/blank.jpeg',
       categoryFetch: [],
-      isLoading: true
+      isLoading: true,
+      spinner: false
     };
     this.fileInputRef = React.createRef();
     this.handleImgChange = this.handleImgChange.bind(this);
@@ -60,6 +61,7 @@ export default class AddItem extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({ spinner: true });
     const formData = new FormData();
     formData.append('image', this.fileInputRef.current.files[0]);
     formData.append('categoryselect', this.state.categoryselect);
@@ -96,6 +98,7 @@ export default class AddItem extends React.Component {
         <>
           <Navbar title={'Add Items'} />
           <div className="row">
+
           <div className="column-full justify-center-only">
             <form className="form-elements" onSubmit={handleSubmit}>
               <div className="row">
@@ -135,6 +138,13 @@ export default class AddItem extends React.Component {
               </div>
             </form>
             </div>
+          </div>
+          <div className={(this.state.spinner) ? 'row' : 'row hidden'}>
+            <div className="column-full spinner-div">
+              <div className="spinner-svg-div justify-center">
+            <img src="https://finalprojectmeet.s3.us-west-1.amazonaws.com/spinner.svg" alt="" />
+            </div>
+          </div>
           </div>
         </>
       );

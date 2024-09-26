@@ -11,7 +11,7 @@ export default class CustMenu extends React.Component {
       menuFetch: [],
       isLoading: false,
       isModalOpen: false,
-      itemSeleted: { itemImg: null }
+      itemSeleted: { itemImg: 'blank.jpeg' }
     };
     this.itemClicked = this.itemClicked.bind(this);
     this.noBtnClick = this.noBtnClick.bind(this);
@@ -34,7 +34,8 @@ export default class CustMenu extends React.Component {
   }
 
   noBtnClick(event) {
-    this.setState({ itemSeleted: [{ itemImg: null }], isModalOpen: false });
+    const seletedItemImg = { itemImg: 'blank.jpeg' };
+    this.setState({ itemSeleted: { ...seletedItemImg }, isModalOpen: false });
   }
 
   qtyClicked(event) {
@@ -70,7 +71,8 @@ export default class CustMenu extends React.Component {
     fetch('/api/add-item', req)
       .then(res => res.json())
       .then(result => {
-        this.setState({ itemSeleted: [{ itemImg: null }], isModalOpen: false });
+        const seletedItemImg = { itemImg: 'blank.jpeg' };
+        this.setState({ itemSeleted: { ...seletedItemImg }, isModalOpen: false });
       });
   }
 
@@ -93,7 +95,7 @@ export default class CustMenu extends React.Component {
             <div className="item-dispay-div">
               <div className="row">
                 <div className="column-full">
-                  <img src={this.state.itemSeleted.itemImg} className="item-img-modal" alt="" />
+                  <img src={'https://finalprojectmeet.s3.us-west-1.amazonaws.com/' + this.state.itemSeleted.itemImg} className="item-img-modal" alt="" />
                 </div>
                 <div className="column-full">
                   <h2 className="modal-item-name">{this.state.itemSeleted.itemName}</h2>

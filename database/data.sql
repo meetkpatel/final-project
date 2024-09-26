@@ -46,4 +46,6 @@ insert into "tables" (
   '14'
 ), (
   '15'
-)
+);
+
+update "tables" set "userId"=2 where "tableNumber"=7

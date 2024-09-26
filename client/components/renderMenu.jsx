@@ -4,7 +4,7 @@ function Item(props) {
   return (
     <div className="column-half">
       <div className="food-item-div">
-        <img src={props.item.itemImg} alt="" />
+        <img src={'https://finalprojectmeet.s3.us-west-1.amazonaws.com/' + props.item.itemImg} alt="" />
         <div className="row width-full">
           <div className="column-full name-price-div">
             <h2>{props.item.itemName}</h2>
@@ -36,14 +36,25 @@ function Cate(props) {
 }
 
 function RenderMenu(props) {
-  return (
-    <div className="row">
-      {
-        props.menuList.map(item => {
-          return <Cate key={item.categoryId} item={item} />;
-        })
-      }
-    </div>
-  );
+  if (!props.menuList[0]) {
+    return (
+      <>
+        <div className="column-full justify-center-only">
+          <h3>No food item added to menu yet</h3>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <div className="row">
+        {
+          props.menuList.map(item => {
+            return <Cate key={item.categoryId} item={item} />;
+          })
+        }
+      </div>
+    );
+  }
+
 }
 export default RenderMenu;

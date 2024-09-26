@@ -7,7 +7,7 @@ function Item(props) {
   return (
     <div className="column-half">
       <div className="food-item-div" onClick={handleClick}>
-        <img src={props.item.itemImg} className="item-img-class" alt="" />
+        <img src={'https://finalprojectmeet.s3.us-west-1.amazonaws.com/' + props.item.itemImg} className="item-img-class" alt="" />
         <div className="row width-full">
           <div className="column-full name-price-div">
             <h2>{props.item.itemName}</h2>
@@ -39,7 +39,16 @@ function Cate(props) {
 }
 
 function RenderCustMenu(props) {
-  return (
+  if (!props.menuList[0]) {
+    return (
+      <>
+        <div className="column-full justify-center-only">
+          <h3>No food item added to menu yet</h3>
+        </div>
+      </>
+    );
+  } else {
+    return (
     <div className="row">
 
       {
@@ -48,6 +57,7 @@ function RenderCustMenu(props) {
         })
       }
     </div>
-  );
+    );
+  }
 }
 export default RenderCustMenu;

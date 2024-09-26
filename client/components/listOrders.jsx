@@ -35,21 +35,31 @@ function Item(props) {
 }
 
 function ListOrders(props) {
-  return (
-    <>
-      <div className="column-full justify-center-only">
-        <div className="cust-orders-div ">
-          <div className="row">
-            {
-              props.ordersFetch.map((item, index) => {
-                return <Item key={index} item={item} orderClicked={props.orderClicked}/>;
-              })
-            }
+  if (!props.ordersFetch[0]) {
+    return (
+      <>
+        <div className="column-full justify-center-only">
+          <h3>No orders has been submitted yet</h3>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="column-full justify-center-only">
+          <div className="cust-orders-div ">
+            <div className="row">
+              {
+                props.ordersFetch.map((item, index) => {
+                  return <Item key={index} item={item} orderClicked={props.orderClicked} />;
+                })
+              }
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
 
 export default ListOrders;

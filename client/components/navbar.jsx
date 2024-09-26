@@ -10,7 +10,7 @@ export default class Navbar extends React.Component {
         <div className="nav-bar">
           <a href="#"><i className="fas fa-home"></i></a>
           <h2 className="nav-title">{title}</h2>
-          <i className="fas fa-sign-out-alt" onClick={handleSignOut}></i>
+          <i className="fas fa-sign-out-alt cursor-poiter" onClick={handleSignOut}></i>
         </div>
       </div>
     );

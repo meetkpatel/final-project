@@ -13,7 +13,16 @@ function Item(props) {
 }
 
 function ListWaitList(props) {
-  return (
+  if (!props.waitListFetch[0]) {
+    return (
+      <>
+        <div className="column-full justify-center-only">
+        <h3>No guest added to waitlist</h3>
+      </div>
+      </>
+    );
+  } else {
+    return (
     <>
       {
         props.waitListFetch.map((item, index) => {
@@ -21,7 +30,8 @@ function ListWaitList(props) {
         })
       }
     </>
-  );
+    );
+  }
 }
 
 export default ListWaitList;

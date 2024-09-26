@@ -9,24 +9,26 @@ export default class AdminHome extends React.Component {
       <Navbar title={'Home'}/>
       <div className="row">
         <div className="column-full home-flex ">
-          <div className="menu-div">
-            <a href="#admin-menu">
-              <i className="fas fa-utensils menu-i-tag"></i>
-            </a>
-            <h3>Menu</h3>
-          </div>
+          <a href="#admin-menu">
             <div className="menu-div">
-              <a href="#waitlist">
+              <i className="fas fa-utensils menu-i-tag"></i>
+            <h3>Menu</h3>
+            </div>
+          </a>
+
+          <a href="#waitlist">
+            <div className="menu-div">
               <i className="fas fa-users  menu-i-tag" ></i>
-              </a>
               <h3>Waitlist</h3>
             </div>
+          </a>
+
+          <a href="#admin-orders">
             <div className="menu-div">
-              <a href="#admin-orders">
-                <i className="fas fa-users  menu-i-tag" ></i>
-              </a>
+                <i className="fas fa-clipboard-list  menu-i-tag" ></i>
               <h3>Orders</h3>
             </div>
+          </a>
         </div>
       </div>
       </>

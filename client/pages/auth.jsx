@@ -11,6 +11,7 @@ export default class AuthPage extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
 
   }
 
@@ -21,6 +22,10 @@ export default class AuthPage extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.handleLogin();
+  }
+
+  handleLogin() {
     const req = {
       method: 'POST',
       headers: {
@@ -41,7 +46,7 @@ export default class AuthPage extends React.Component {
 
   render() {
     const { user } = this.context;
-    const { handleChange, handleSubmit } = this;
+    const { handleChange, handleSubmit, handleLogin } = this;
     if (user) return <Redirect to="" />;
 
     return (
@@ -74,6 +79,18 @@ export default class AuthPage extends React.Component {
                 Login
               </button>
             </div>
+            <div className="column-full justify-center-only">
+              <button className="admin-demo-btn" onMouseEnter={() => this.setState({ mobile: '111', password: '123' })} onClick={handleLogin}>
+                Admin Demo Login
+              </button>
+            </div>
+            <div className="column-full justify-center-only">
+              <button className="cust-demo-btn" onMouseEnter={() => this.setState({ mobile: '222', password: '123' })} onClick={handleLogin}>
+                Customer Demo Login
+              </button>
+            </div>
+            {/*
+             */}
         </form>
       </div>
       </div>

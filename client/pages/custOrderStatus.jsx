@@ -9,7 +9,7 @@ export default class AdminOrders extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ordersFetch: {},
+      ordersFetch: { orderStatus: 'not-found' },
       isLoading: false
     };
 
@@ -50,7 +50,12 @@ export default class AdminOrders extends React.Component {
       return (
         <>
           <Navbar title={'Orders'} />
-          <div className="row justify-center-only ">
+          <div className={(this.state.ordersFetch.orderStatus === 'not-found') ? 'row' : 'row hidden'}>
+            <div className="column-full justify-center-only">
+              <h3>No order placed yet, please order first</h3>
+            </div>
+          </div>
+          <div className={(this.state.ordersFetch.orderStatus === 'not-found' ? 'row justify-center-only hidden' : 'row justify-center-only')}>
             <div className="order-status-div">
               <div className="column-full justify-center-only">
               <h2>Order No {this.state.ordersFetch.orderId}</h2>
@@ -82,11 +87,11 @@ export default class AdminOrders extends React.Component {
 }
 function changeimg(status) {
   if (status === 'Received') {
-    return '1.png';
+    return 'https://finalprojectmeet.s3.us-west-1.amazonaws.com/1.png';
   } else if (status === 'preparing') {
-    return '2.png';
+    return 'https://finalprojectmeet.s3.us-west-1.amazonaws.com/2.png';
   } else {
-    return '3.png';
+    return 'https://finalprojectmeet.s3.us-west-1.amazonaws.com/3.png';
   }
 }
 AdminOrders.contextType = AppContext;

@@ -70,8 +70,13 @@ export default class AddCategory extends React.Component {
       return (
         <>
           <Navbar title={'Cart'} />
+          <div className={(this.state.cartItemsFetch[0]) ? 'row hidden' : 'row'}>
+            <div className="column-full justify-center-only">
+              <h3>Your cart is empty</h3>
+            </div>
+          </div>
           <form onSubmit={this.handleSubmit}>
-          <div className="row">
+            <div className={(this.state.cartItemsFetch[0]) ? 'row' : 'row hidden'}>
             <div className="column-full justify-center-only">
               <div className="cart-list-div">
                 {<ListCartItems cartItemsFetch={this.state.cartItemsFetch} />}
